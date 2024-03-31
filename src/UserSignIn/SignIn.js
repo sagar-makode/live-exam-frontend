@@ -125,7 +125,7 @@ useEffect(() => {
       const args = {
         message: "Login Success",
         description: "Congratulations, You have login Successfully",
-        duration: 2,
+        duration: 15,
       };
       notification.open(args);
     };
