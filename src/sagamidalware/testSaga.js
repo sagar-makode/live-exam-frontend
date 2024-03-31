@@ -11,7 +11,7 @@ function* fetchTestSaga() {
      const token = sessionStorage.getItem('token');
   
      // Make a request to fetch user data from the backend with token in headers
-     const response = yield call(axios.get, "http://localhost:5000/tests", {
+     const response = yield call(axios.get, "https://live-exam-backend.onrender.com/tests", {
        headers: {
          Authorization: `Bearer${token}`
        }
@@ -30,7 +30,7 @@ function* fetchTestSaga() {
 function* handleSubmitTest(action) {
   try {
 
-    const response = yield call(axios.put, "http://localhost:5000/examsubmit", action.payload);
+    const response = yield call(axios.put, "https://live-exam-backend.onrender.com/examsubmit", action.payload);
 
     
     if (response.data) {
@@ -55,7 +55,7 @@ function* fetchStudentResultSaga() {
 
 
      // Make a request to fetch user data from the backend with token in headers
-     const response = yield call(axios.get, "http://localhost:5000/resulttable", {
+     const response = yield call(axios.get, "https://live-exam-backend.onrender.com/resulttable", {
        headers: {
          Authorization: `Bearer${token}`
        }
@@ -85,7 +85,7 @@ function* fetchTeacherCreatedTestSaga() {
 
 
      // Make a request to fetch user data from the backend with token in headers
-     const response = yield call(axios.get, "http://localhost:5000/teachercreatedtest", {
+     const response = yield call(axios.get, "https://live-exam-backend.onrender.com/teachercreatedtest", {
        headers: {
          Authorization: `Bearer${token}`
        }

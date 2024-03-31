@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function* handleSignup(action) {
     try {
-      const response = yield call(axios.post, "http://localhost:5000/register", action.payload);
+      const response = yield call(axios.post, "https://live-exam-backend.onrender.com/register", action.payload);
 
     
       if (response.data) {
@@ -22,7 +22,7 @@ function* handleSignup(action) {
 
   function* handleTeacherSignin(action) {
     try {
-      const response = yield call(axios.post, "http://localhost:5000/teacherlogin", action.payload);
+      const response = yield call(axios.post, "https://live-exam-backend.onrender.com/teacherlogin", action.payload);
       
   
       if (response.data.token) {
@@ -39,7 +39,7 @@ function* handleSignup(action) {
 
   function* handleStudentSignin(action) {
     try {
-      const response = yield call(axios.post, "http://localhost:5000/studentlogin", action.payload);
+      const response = yield call(axios.post, "https://live-exam-backend.onrender.com/studentlogin", action.payload);
       
 
   

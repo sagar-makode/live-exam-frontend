@@ -10,7 +10,7 @@ function* fetchUserDataSaga() {
      const token = sessionStorage.getItem('token');
 
      // Make a request to fetch user data from the backend with token in headers
-     const response = yield call(axios.get, "http://localhost:5000/dashboard", {
+     const response = yield call(axios.get, "https://live-exam-backend.onrender.com", {
        headers: {
          Authorization: `Bearer${token}`
        }
@@ -33,7 +33,7 @@ function* fetchUserDataSaga() {
 function* handelCreateTest(action) {
   try {
   
-    const response = yield call(axios.post, "http://localhost:5000/createtest", action.payload);
+    const response = yield call(axios.post, "https://live-exam-backend.onrender.com/createtest", action.payload);
 
 
     
