@@ -10,7 +10,7 @@ function* fetchUserDataSaga() {
      const token = sessionStorage.getItem('token');
 
      // Make a request to fetch user data from the backend with token in headers
-     const response = yield call(axios.get, "https://live-exam-backend.onrender.com", {
+     const response = yield call(axios.get, "https://live-exam-backend.onrender.com/dashboard", {
        headers: {
          Authorization: `Bearer${token}`
        }
