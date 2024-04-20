@@ -32,13 +32,15 @@ const data = {
     testId : test._id,
     studentId : studentProfileData._id
 }
-useEffect(() => {
+// useEffect(() => {
 
-dispatch(fetchteacherSubscribers(data))
+// dispatch(fetchteacherSubscribers(data))
     
-},[subcribeSuccess,unsubcribeSuccess]);
+// },[dispatch,subcribeSuccess,unsubcribeSuccess]);
 
-
+useEffect(() => {
+    dispatch(fetchteacherSubscribers(data));
+}, [dispatch, subcribeSuccess, unsubcribeSuccess, data]);
 
 
     return (
