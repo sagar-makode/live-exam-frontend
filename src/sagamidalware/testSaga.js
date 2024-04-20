@@ -122,7 +122,7 @@ function* deleteTestDataTempSaga(action){
     const response = yield call(axios.put, "https://live-exam-backend.onrender.com/deletetest", action.payload);
     if (response.data) {
       const data = response.data;
-      console.log( response.data);
+    
       yield put({ type: TEMP_DELETE_TEST_DATA_SUCCESS_MESSAGE, payload:data });
     }
 
@@ -135,7 +135,7 @@ function* deleteTestDataTempSaga(action){
 //Deleting Test Data Permanently by using the Test Id
 function* deleteTestDataPermanentlySaga(action){
   try {
-    console.log(action.payload.testId)
+
     const api="https://live-exam-backend.onrender.com/deletetestpermanently/"+action.payload.testId;
     
     const response = yield call(axios.delete, api);
@@ -143,7 +143,7 @@ function* deleteTestDataPermanentlySaga(action){
     
     if (response.data) {
       const data = response.data
-    console.log(response.data);
+  
       
       yield put({ type: DELETE_TEST_DATA_SUCCESS_MESSAGE, payload:data });
     }
