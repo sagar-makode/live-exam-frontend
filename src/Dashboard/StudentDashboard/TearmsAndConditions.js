@@ -40,7 +40,7 @@ const data = {
 
 useEffect(() => {
     dispatch(fetchteacherSubscribers(data));
-}, [dispatch, subcribeSuccess, unsubcribeSuccess, data]);
+}, [subcribeSuccess, unsubcribeSuccess]);
 
 
     return (
