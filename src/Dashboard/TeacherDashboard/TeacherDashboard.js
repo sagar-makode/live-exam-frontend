@@ -7,7 +7,7 @@ import CreateTest from './CreateTest';
 import StudentResult from './StudentResult';
 import Trash from './Trash'
 import AllCreatedTest from './AllCreatedTest';
-// import Index from "./Index"
+import Index from "./Index"
 import { fetchTeacherCreatedTests, fetchTeacherCreatedTestsinBin } from '../../actions/testActions';
 
 function TeacherDashboard() {
@@ -15,24 +15,17 @@ function TeacherDashboard() {
     const [activeTab, setActiveTab] = useState('dashboard');
     const [loading, setLoading] = useState(false);
     const teacherProfileData = useSelector(state => state.dashboard.userData);
-   
   
     const handleTabClick = (tab) => {
       setActiveTab(tab);  };
   
   
-    useEffect(() => {
-  
-      setLoading(true)
-     
+    useEffect(() => {  
+      setLoading(true);     
       dispatch(fetchTeacherCreatedTests());
-      dispatch(fetchTeacherCreatedTestsinBin());
-     
-      setLoading(false)
+      dispatch(fetchTeacherCreatedTestsinBin());     
+      setLoading(false);
     }, [dispatch]);
-  
-  
-  
   
   
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -49,15 +42,10 @@ function TeacherDashboard() {
     
   
 
-
-
-
-
-
-
   return (
     <div>
          {loading ? (
+          
         // Render the spinner only when loading is true
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
@@ -178,15 +166,13 @@ function TeacherDashboard() {
         </div>
 
       </nav>
-
-
       <div className="main-content" style={{ marginLeft: isSidebarOpen ? '250px' : '90px', transition: 'margin-left 0.3s ease' }}>
         {/* Render content based on activeTab */}
         {activeTab === 'dashboard' && (
           <div>
             {/* Dashboard content */}
-            <h1>Dashboard Content</h1>
-            {/* <Index/> */}
+            {/* <h1>Dashboard Content</h1> */}
+            <Index />
           </div>
         )}
         {activeTab === 'createTest' && (
