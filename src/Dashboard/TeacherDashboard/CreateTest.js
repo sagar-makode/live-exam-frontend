@@ -41,7 +41,7 @@ function CreateTest() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(e.target)
+        
         Swal.fire({
             title: "Are you sure?",
             text: "Do you want to create this test!",
