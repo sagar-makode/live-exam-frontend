@@ -19,6 +19,27 @@ export const FETCH_TEACHER_CREATED_TEST= 'FETCH_TEACHER_CREATED_TEST';
 export const FETCH_TEACHER_CREATED_TEST_SUCCESS= 'FETCH_TEACHER_CREATED_TEST_SUCCESS';
 export const FETCH_TEACHER_CREATED_TEST_FAILURE= 'FETCH_TEACHER_CREATED_TEST_FAILURE';
 
+//Test Created By The Teacher Which is in Trash
+export const FETCH_TEACHER_CREATED_TEST_IN_BIN="FETCH_TEACHER_CREATED_TEST_IN_BIN";
+export const FETCH_TEACHER_CREATED_TEST_IN_BIN_SUCCESS="FETCH_TEACHER_CREATED_TEST_IN_BIN_SUCCESS";
+export const FETCH_TEACHER_CREATED_TEST_IN_BIN_FAILURE="FETCH_TEACHER_CREATED_TEST_IN_BIN_FAILURE";
+
+//Deleting Test Data Permanently
+export const DELETE_TEST_DATA="DELETE_TEST_DATA";
+export const  DELETE_TEST_DATA_SUCCESS_MESSAGE="DELETE_TEST_DATA_SUCCESS_MESSAGE";
+export const  DELETE_TEST_DATA_FALIURE_MESSAGE="DELETE_TEST_DATA_FALIURE_MESSAGE";
+
+//Restoring the test data from the Trash deleted by the user
+export const RESTORE_DELETE_TEST_DATA="RESTORE_DELETE_TEST_DATA";
+export const RESTORE_DELETE_TEST_DATA_SUCCESS_MESSAGE="RESTORE_DELETE_TEST_DATA_SUCCESS_MESSAGE";
+export const RESTORE_DELETE_TEST_DATA_FALIURE_MESSAGE="RESTORE_DELETE_TEST_DATA_FALIURE_MESSAGE";
+
+//For Deleting The Test Data From The All Created Folder
+export const TEMP_DELETE_TEST_DATA="TEMP_DELETE_TEST_DATA";
+export const TEMP_DELETE_TEST_DATA_SUCCESS_MESSAGE="TEMP_DELETE_TEST_DATA_SUCCESS_MESSAGE";
+export const TEMP_DELETE_TEST_DATA_FAILURE_MESSAGE="TEMP_DELETE_TEST_DATA_FAILURE_MESSAGE";
+
+
 
 
 // export const FETCH_SUBMITED_TEST_ANSWER = 'FETCH_SUBMITED_TEST_ANSWER';
@@ -97,11 +118,26 @@ export const fetchTestresultFailure = (error) => ({
   //     payload: id,
   //   }}
   
-
+  export const DeleteTestDataTemp =(testId)=>({
+    type: TEMP_DELETE_TEST_DATA,
+    payload : testId
+  })
+  export const DeleteTestDataPermanently=(testId)=>({
+    type:DELETE_TEST_DATA,
+    payload:testId
+  })
+  export const RestoreDeletedData=(testId)=>({
+    type: RESTORE_DELETE_TEST_DATA,
+    payload : testId
+  })
 
   export const fetchTeacherCreatedTests = () => (
     {
     type: FETCH_TEACHER_CREATED_TEST
   });
+
+export const fetchTeacherCreatedTestsinBin=()=>({
+type: FETCH_TEACHER_CREATED_TEST_IN_BIN
+})
   
   

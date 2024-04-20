@@ -1,46 +1,78 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTeacherCreatedTests } from '../../actions/testActions';
+import Trash from '../../assets/trash img.jpg'
+import { DeleteTestDataTemp } from '../../actions/testActions';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+
 
 function AllCreatedTest() {
 
     const trachertestData = useSelector(state => state.tests.teacherCreatedTest);
+    const deleteTestMsg=useSelector(state=>state.tests.deleteTestDataSuccessMsg);
+    const [clickOnDelete,setClickOnDelete]=useState(1)
+    
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-     
         dispatch(fetchTeacherCreatedTests())
-       
-      }, [dispatch]);
+    },[dispatch,clickOnDelete,deleteTestMsg]);
 
-    return (
+
+    const handleDeleteTest=(event)=>{
+        const dispatchedData={
+            testId:event.target.id
+        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You are able to revert this from Trash!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Test has been moved to Trash.",
+                icon: "success"
+              });
+              dispatch(DeleteTestDataTemp(dispatchedData));
+              setClickOnDelete(clickOnDelete+1);      
+            }
+            else{
+                console.log("Not moved to trash : Something Went Wrong")
+            }
+          });         
+    }
+
+        return (
         <div>
-
-
-
-
             <h1>All Created Test</h1>
             <div className="row">
-
-
                 {trachertestData.map((test, index) => (
                     <div className="col-md-4" key={index}>
+
                         <div className="card mb-4 shadow-sm">
                             <div className="card-body">
-
-                                <h5 className="card-title">Test Name: {test.testName}</h5>
+                                <div className='d-flex justify-content-between'>
+                                    <h5 className="card-title">Test Name: {test.testName} </h5>
+                                    <img src={Trash} style={{ height: "2.5rem", width: "2.5rem" }} id={test._id} name={test.testName} onClick={handleDeleteTest} alt='Trash' />
+                                </div>
                                 <p className="card-text">Category: {test.category}</p>
                                 <p className="card-text">Total Questions: {test.questions.length}</p>
                                 <p className="card-text">Duration: {test.totalMinutes} minutes</p>
                                 <p className="card-text">Toatal Marks: {test.totalMarks} minutes</p>
-
-                                {/* Add other test information here */}
-                                {/* <button className="btn btn-primary" onClick={() => handleAttemptTest(test)}>Attempt Test</button> */}
-                            </div>
+                              
+                            </div> 
                         </div>
                     </div>
-              ))}
-              </div>
+                ))}
+            </div>
+            
         </div>
     )
 }

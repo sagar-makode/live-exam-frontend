@@ -5,9 +5,12 @@ import avtar from "../../assets/pngegg.png"
 import { Spinner } from 'react-bootstrap';
 
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TestSeries from './TestSeries';
 import TestResults from './TestResults';
+import AllTests from './AllTests';
+import Subcriptions from './Subcriptions';
+import ALLCreater from './ALLCreater';
 
 function StudentDashBoard() {
 
@@ -16,7 +19,6 @@ function StudentDashBoard() {
   const dispatch = useDispatch()
 
   const studentProfileData = useSelector(state => state.dashboard.userData);
-  const testsData = useSelector(state => state.tests.tests);
 
 
 
@@ -28,11 +30,6 @@ function StudentDashBoard() {
     setActiveTab(tab);
   };
 
-  const navigate = useNavigate()
-
-  const handleAttemptTest = async (test) => {
-    navigate(`/liveexam`, { state: { test, studentProfileData } });
-  };
 
 
   useEffect(() => {
@@ -40,6 +37,7 @@ function StudentDashBoard() {
     setLoading(true)
     dispatch(fetchTests());
     dispatch(fetchStudentTestresult())
+   
     setLoading(false)
   }, [dispatch]);
 
@@ -125,7 +123,29 @@ function StudentDashBoard() {
                   </Link>
                 </li>
 
+                <li className={`nav-link ${activeTab === 'subscriptions' ? 'active' : ''}`} onClick={() => handleTabClick('subscriptions')}>
+                  <Link >
+                   
+                      <span className="material-symbols-outlined icon">
+                        subscriptions
+                      </span>
+                   
+                    <span className="text nav-text">Subscriptions</span>
+                  </Link>
+                </li>
 
+
+
+                <li className={`nav-link ${activeTab === 'allcreater' ? 'active' : ''}`} onClick={() => handleTabClick('allcreater')}>
+                  <Link >
+                   
+                      <span className="material-symbols-outlined icon">
+                        groups
+                      </span>
+                   
+                    <span className="text nav-text">ALL Creaters</span>
+                  </Link>
+                </li>
                 <li className={`nav-link ${activeTab === 'wishlist' ? 'active' : ''}`} onClick={() => handleTabClick('wishlist')}>
                   <Link >
                     <i className='bx bx-bookmark-heart icon'></i>
@@ -181,26 +201,9 @@ function StudentDashBoard() {
           )}
           {activeTab === 'liveTest' && (
             <div>
-              {/* Live Test content */}
-              <h1>Live Test Content</h1>
-              <div className="row">
-                {testsData.map((test, index) => (
-                  <div className="col-md-4" key={index}>
-                    <div className="card mb-4 shadow-sm">
-                      <div className="card-body">
-
-                        <h5 className="card-title">{test.testName}</h5>
-                        <p className="card-text">Duration: {test.totalMinutes} minutes</p>
-                        <p className="card-text">Toatal Marks: {test.totalMarks} minutes</p>
-
-                        {/* Add other test information here */}
-                        <button className="btn btn-primary" onClick={() => handleAttemptTest(test)}>Attempt Test</button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <AllTests />
             </div>
+
           )}
           {activeTab === 'testSeries' && (
             <div>
@@ -213,6 +216,18 @@ function StudentDashBoard() {
             <div>
 
               <TestResults />
+            </div>
+          )}
+          {activeTab === 'subscriptions' && (
+            <div>
+
+              <Subcriptions />
+            </div>
+          )}
+          {activeTab === 'allcreater' && (
+            <div>
+
+              <ALLCreater />
             </div>
           )}
 

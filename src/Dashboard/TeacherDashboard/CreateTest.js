@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { CreateTestRequst } from '../../actions/dashboardActions';
+import Trash from "../../assets/cross.png"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 function CreateTest() {
-
-
 
 
     const [testName, setTestName] = useState('');
@@ -12,9 +12,6 @@ function CreateTest() {
     const [minutes, setMinutes] = useState('');
     const [outOfMarks, setOutOfMarks] = useState('');
     const dispatch = useDispatch();
-
-
-
     
   const [questions, setQuestions] = useState([{ question: '', options: ['', '', '', ''], correctOption: '' }]);
  
@@ -29,6 +26,7 @@ function CreateTest() {
 
   const testData = {
     teacherId: teacherProfileData._id, // Assuming teacher ID is stored in teacherProfileData.id
+    teacherName : teacherProfileData.name,
     testName : testName,
     totalMinutes : minutes,
     totalMarks : outOfMarks,
@@ -43,10 +41,32 @@ function CreateTest() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(CreateTestRequst(testData));
+        console.log(e.target)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to create this test!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, create it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Created!",
+                text: "Your Test has been Created Successfully.",
+                icon: "success"
+              });
+              dispatch(CreateTestRequst(testData));
+            }         
+          });
       };
 
-      
+    const deleteQuestion=e=>{
+        const updatedQuestions = questions.filter((_, index) => index !== e);
+        setQuestions(updatedQuestions);
+
+    }
 
     return (
         <div>
@@ -62,8 +82,6 @@ function CreateTest() {
                             name="testName"
                             value={testName}
                             onChange={(e) => setTestName(e.target.value)}
-
-
                         />
                     </div>
 
@@ -107,7 +125,6 @@ function CreateTest() {
                             name="outOfMarks"
                             value={outOfMarks}
                             onChange={(e) => setOutOfMarks(e.target.value)}
-
                         />
                     </div>
 
@@ -115,6 +132,7 @@ function CreateTest() {
                         <div key={index}>
                             <div className="mb-3">
                                 <label htmlFor={`question${index}`} className="form-label">Question {index + 1}</label>
+                                <div className='d-flex'>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -128,6 +146,13 @@ function CreateTest() {
                                     }}
 
                                 />
+                    <button style={{border:"none"}}  type="button"
+                    onClick={() => deleteQuestion(index)}              
+                >
+                    <img src={Trash} style={{ height: "2.5rem", width: "2.5rem", borderRadius:".5rem" }} alt='Trash' />
+                </button>
+                                </div>
+
                             </div>
                             <div className="row">
                                 {question.options.map((option, optionIndex) => (
