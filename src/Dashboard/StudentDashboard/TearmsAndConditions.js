@@ -71,12 +71,12 @@ useEffect(() => {
              <p>Subscribers: {techernamesubcriber.subscribers && techernamesubcriber.subscribers.length}</p>
            
              {isSubscribed ? (
-                    <button onClick={handleUnsubscribe}>Unsubscribe</button>
+                    <button onClick={handleUnsubscribe} className="btn btn-secondary">Unsubscribe</button>
                 ) : (
-                    <button onClick={handleSubscribe}>Subscribe</button>
+                    <button onClick={handleSubscribe} className="btn btn-danger">Subscribe</button>
                 )}
-
-                <button className='m-3' onClick={handleStartTest}>Start Test</button>
+           
+                <button className='m-3 btn btn-success' onClick={handleStartTest}>Start Test</button>
 
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllCretater, subscribeToTeacher, unsubscribetoTeacher} from '../../actions/subscribers';
+import { fetchAllCretater, subscribeToTeacher, unsubscribetoTeacher } from '../../actions/subscribers';
 import img from "../../assets/pngegg.png"
 
 function ALLCreater() {
@@ -10,22 +10,22 @@ function ALLCreater() {
   const subcribeSuccess = useSelector(state => state.subcriptiondata.subcribeSuccess);
   const unsubcribeSuccess = useSelector(state => state.subcriptiondata.unsubcribeSuccess);
   console.log(unsubcribeSuccess);
-console.log(allCreterwithSubStatus);
-    const dispatch = useDispatch()
-    useEffect(() => {
-      dispatch(fetchAllCretater())
-  
-    }, [dispatch,subcribeSuccess,unsubcribeSuccess]);
-  
+  console.log(allCreterwithSubStatus);
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchAllCretater())
 
-    const handleSubscribe = (id) => {
-      // Dispatch action to subscribe student to teacher
+  }, [dispatch, subcribeSuccess, unsubcribeSuccess]);
 
-      dispatch(subscribeToTeacher(id));
+
+  const handleSubscribe = (id) => {
+    // Dispatch action to subscribe student to teacher
+
+    dispatch(subscribeToTeacher(id));
   };
 
   const handleUnsubscribe = (id) => {
-      dispatch(unsubscribetoTeacher(id));
+    dispatch(unsubscribetoTeacher(id));
   };
 
 
@@ -40,12 +40,10 @@ console.log(allCreterwithSubStatus);
               <div>{subscription.name}</div>
               <div>Subscribers: {subscription.subscribers.length}</div>
               {subscription.isSubscribed ? (
-                
-                <button onClick={()=>handleUnsubscribe(subscription._id)}>Unsubscribe</button>
-              ) : (
-                
-                <button onClick={()=>handleSubscribe(subscription._id)}>Subscribe</button>
-                )}
+  <button onClick={()=>handleUnsubscribe(subscription._id)} className="btn btn-secondary">Unsubscribe</button>
+) : (
+  <button onClick={()=>handleSubscribe(subscription._id)} className="btn btn-danger">Subscribe</button>
+)}
             </div>
           </div>
         ))}
