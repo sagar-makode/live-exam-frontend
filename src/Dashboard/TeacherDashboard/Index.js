@@ -1,8 +1,5 @@
 import {
-  DollarCircleOutlined,
   FileTextOutlined,
-  ShoppingOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
@@ -33,9 +30,8 @@ ChartJS.register(
 function Dashboard() {
   const dispatch = useDispatch()
   const [orders, setOrders] = useState(0);
-  const [inventory, setInventory] = useState(0);
   const [noOftests, setnoOftests] = useState(0);
-  const [revenue, setRevenue] = useState(0);
+  
 
   const testsData = useSelector(state => state.tests.teacherCreatedTest);
   const teacherProfileData = useSelector(state => state.dashboard.userData);
@@ -45,7 +41,6 @@ function Dashboard() {
     setOrders(testsData);
   }
   const noOftestscreated = () => {
-
 
     setnoOftests(testsData.length);
   }
@@ -59,7 +54,7 @@ function Dashboard() {
   useEffect(() => {
     getOrders();
     noOftestscreated()
-  }, [dispatch]);
+  }, [dispatch,getOrders]);
 
 
   return (

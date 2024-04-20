@@ -1,13 +1,9 @@
 import React from 'react'
 import "./home.css"
-import { Link } from 'react-router-dom'
+
 import img from "../../assets/photo.png"
 import HomeFormCard from './HomeFormCard';
 import { TypeAnimation } from 'react-type-animation';
-
-import image1 from "../../assets/2.jpg";
-import image3 from "../../assets/5.jpg";
-// import image4 from "../../assets/5.jpg";
 
 
 
