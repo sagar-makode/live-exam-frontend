@@ -18,8 +18,7 @@ function ALLCreater() {
 
   }, [dispatch, subcribeSuccess, unsubcribeSuccess]);
   useEffect(() => {
-  setLoading({})
-  console.log("123");
+    setLoading({})
 
   }, [allCreterwithSubStatus]);
 
@@ -37,7 +36,7 @@ function ALLCreater() {
       [id]: true,
     }));
     dispatch(unsubscribetoTeacher(id));
-  
+
   };
 
   // useEffect(() => {

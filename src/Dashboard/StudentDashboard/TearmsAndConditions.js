@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchteacherSubscribers, subscribeToTeacher, unsubscribetoTeacher } from '../../actions/subscribers';
+import { Button, Spinner } from 'react-bootstrap';
 
 
 const TermsAndConditions = ({ test, studentProfileData, onAttemptTest }) => {
@@ -10,6 +11,7 @@ const TermsAndConditions = ({ test, studentProfileData, onAttemptTest }) => {
     const unsubcribeSuccess = useSelector(state => state.subcriptiondata.unsubcribeSuccess);
     const isSubscribed = useSelector(state => state.subcriptiondata.isSubscribed);
 
+    const [loading, setLoading] = useState(false);
 
     const handleStartTest = () => {
         // Trigger the attempt test function from AllTests component
@@ -27,28 +29,34 @@ const TermsAndConditions = ({ test, studentProfileData, onAttemptTest }) => {
     };
 
 
-const dispatch = useDispatch()
-const data = {
-    testId : test._id,
-    studentId : studentProfileData._id
-}
-// useEffect(() => {
+    const dispatch = useDispatch()
+    const data = {
+        testId: test._id,
+        studentId: studentProfileData._id
+    }
+    useEffect(() => {
 
-// dispatch(fetchteacherSubscribers(data))
-    
-// },[dispatch,subcribeSuccess,unsubcribeSuccess]);
+        dispatch(fetchteacherSubscribers(data))
 
-useEffect(() => {
-    dispatch(fetchteacherSubscribers(data));
-}, [subcribeSuccess, unsubcribeSuccess]);
+    }, [subcribeSuccess, unsubcribeSuccess]);
+
+    useEffect(() => {
+
+       setLoading(false)
+
+    }, [techernamesubcriber]);
+
+
+
+
 
 
     return (
         <div>
             <div>
 
-          
-            
+
+
 
                 <h2>General Instructions:</h2>
                 <p>Total duration of JEE-Main - 40503621_BTECH 8th Jan 2020 Shift 2 is 180 min.</p>
@@ -67,15 +75,19 @@ useEffect(() => {
 
 
                 <h3>Test Creater : {techernamesubcriber.name}</h3>
-             
-             <p>Subscribers: {techernamesubcriber.subscribers && techernamesubcriber.subscribers.length}</p>
-           
-             {isSubscribed ? (
-                    <button onClick={handleUnsubscribe} className="btn btn-secondary">Unsubscribe</button>
+
+                <p>Subscribers: {techernamesubcriber.subscribers && techernamesubcriber.subscribers.length}</p>
+
+                {isSubscribed ? (
+                    <Button variant="danger" onClick={handleUnsubscribe} disabled={loading}>
+                        {loading ? <Spinner animation="border" size="sm" /> : 'Unsubscribe'}
+                    </Button>
                 ) : (
-                    <button onClick={handleSubscribe} className="btn btn-danger">Subscribe</button>
+                    <Button variant="primary" onClick={handleSubscribe} disabled={loading}>
+                        {loading ? <Spinner animation="border" size="sm" /> : 'Subscribe'}
+                    </Button>
                 )}
-           
+
                 <button className='m-3 btn btn-success' onClick={handleStartTest}>Start Test</button>
 
             </div>
