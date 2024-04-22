@@ -20,11 +20,14 @@ const TermsAndConditions = ({ test, studentProfileData, onAttemptTest }) => {
 
 
     const handleSubscribe = () => {
+        setLoading(true)
         // Dispatch action to subscribe student to teacher
         dispatch(subscribeToTeacher(techernamesubcriber._id));
     };
 
     const handleUnsubscribe = () => {
+        setLoading(true)
+
         dispatch(unsubscribetoTeacher(techernamesubcriber._id));
     };
 
