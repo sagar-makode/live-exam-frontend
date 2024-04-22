@@ -15,9 +15,13 @@ function ALLCreater() {
 
   useEffect(() => {
     dispatch(fetchAllCretater());
-    setLoading({});
 
   }, [dispatch, subcribeSuccess, unsubcribeSuccess]);
+  useEffect(() => {
+  setLoading({})
+  console.log("123");
+
+  }, [allCreterwithSubStatus]);
 
   const handleSubscribe = async id => {
     setLoading(prevLoadingStates => ({
