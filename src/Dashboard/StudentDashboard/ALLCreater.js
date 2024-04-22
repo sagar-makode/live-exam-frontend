@@ -1,48 +1,55 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllCretater, subscribeToTeacher, unsubscribetoTeacher} from '../../actions/subscribers';
-import img from "../../assets/pngegg.png"
+import { fetchAllCretater, subscribeToTeacher, unsubscribetoTeacher } from '../../actions/subscribers';
+import img from '../../assets/pngegg.png';
 import { Button, Spinner } from 'react-bootstrap';
 
 function ALLCreater() {
-
-
   const allCreterwithSubStatus = useSelector(state => state.subcriptiondata.allCreterwithSubStatus);
   const subcribeSuccess = useSelector(state => state.subcriptiondata.subcribeSuccess);
   const unsubcribeSuccess = useSelector(state => state.subcriptiondata.unsubcribeSuccess);
-  console.log(unsubcribeSuccess);
-  const [loading, setLoading] = useState(false); // Add loading state
 
-console.log(allCreterwithSubStatus);
-    const dispatch = useDispatch()
-    useEffect(() => {
-      dispatch(fetchAllCretater())
-      // setLoading(false)
-  
-    }, [dispatch,subcribeSuccess,unsubcribeSuccess]);
-  
+  const [loading, setLoading] = useState({}); // Add loading state
 
-    const handleSubscribe = async (id) => {
-      setLoading(true)
-      // Dispatch action to subscribe student to teacher
-  dispatch(subscribeToTeacher(id))
-    }
+  const dispatch = useDispatch();
 
-  const handleUnsubscribe = (id) => {
-    setLoading(true)
+  useEffect(() => {
+    dispatch(fetchAllCretater());
+  }, [dispatch, subcribeSuccess, unsubcribeSuccess]);
 
-      dispatch(unsubscribetoTeacher(id));
+  const handleSubscribe = async id => {
+    setLoading(prevLoadingStates => ({
+      ...prevLoadingStates,
+      [id]: true,
+    }));
+    dispatch(subscribeToTeacher(id));
+    setLoading(prevLoadingStates => ({
+      ...prevLoadingStates,
+      [id]: false,
+    }));
   };
+
+  const handleUnsubscribe = id => {
+    setLoading(prevLoadingStates => ({
+      ...prevLoadingStates,
+      [id]: true,
+    }));
+    dispatch(unsubscribetoTeacher(id));
+    setLoading(prevLoadingStates => ({
+      ...prevLoadingStates,
+      [id]: false,
+    }));
+  };
+
   useEffect(() => {
     if (subcribeSuccess || unsubcribeSuccess) {
-      setLoading(false);
+      setLoading({});
     }
   }, [subcribeSuccess, unsubcribeSuccess]);
 
-
   return (
     <div>
-      <h1> ALL Creator</h1>
+      <h1>ALL Creator</h1>
       <div>
         {allCreterwithSubStatus.map((subscription, index) => (
           <div key={index} style={{ display: 'inline-block', margin: '0 10px' }}>
@@ -51,23 +58,20 @@ console.log(allCreterwithSubStatus);
               <div>{subscription.name}</div>
               <div>Subscribers: {subscription.subscribers.length}</div>
               {subscription.isSubscribed ? (
-                 <Button variant="danger" onClick={() => handleUnsubscribe(subscription._id)} disabled={loading}>
-                 {loading ? <Spinner animation="border" size="sm" /> : 'Unsubscribe'} 
-               </Button>
-                // <button onClick={()=>handleUnsubscribe(subscription._id)}>Unsubscribe</button>
+                <Button variant="danger" onClick={() => handleUnsubscribe(subscription._id)} disabled={loading[subscription._id]}>
+                  {loading[subscription._id] ? <Spinner animation="border" size="sm" /> : 'Unsubscribe'}
+                </Button>
               ) : (
-                <Button variant="primary" onClick={() => handleSubscribe(subscription._id)} disabled={loading}>
-                {loading ? <Spinner animation="border" size="sm" /> : 'Subscribe'} 
-              </Button>
-                // <button onClick={()=>handleSubscribe(subscription._id)}>Subscribe</button>
-                )}
+                <Button variant="primary" onClick={() => handleSubscribe(subscription._id)} disabled={loading[subscription._id]}>
+                  {loading[subscription._id] ? <Spinner animation="border" size="sm" /> : 'Subscribe'}
+                </Button>
+              )}
             </div>
           </div>
         ))}
       </div>
-
     </div>
-  )
+  );
 }
 
-export default ALLCreater
+export default ALLCreater;
