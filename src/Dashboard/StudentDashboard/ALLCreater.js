@@ -23,10 +23,10 @@ function ALLCreater() {
       [id]: true,
     }));
     dispatch(subscribeToTeacher(id));
-    setLoading(prevLoadingStates => ({
-      ...prevLoadingStates,
-      [id]: false,
-    }));
+    // setLoading(prevLoadingStates => ({
+    //   ...prevLoadingStates,
+    //   [id]: false,
+    // }));
   };
 
   const handleUnsubscribe = id => {
@@ -35,10 +35,10 @@ function ALLCreater() {
       [id]: true,
     }));
     dispatch(unsubscribetoTeacher(id));
-    setLoading(prevLoadingStates => ({
-      ...prevLoadingStates,
-      [id]: false,
-    }));
+    // setLoading(prevLoadingStates => ({
+    //   ...prevLoadingStates,
+    //   [id]: false,
+    // }));
   };
 
   useEffect(() => {
