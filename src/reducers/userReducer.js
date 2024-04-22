@@ -1,12 +1,13 @@
 // userReducer.js
-import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, CLEAR_MESSAGE, SIGNIN_SUCCESS, SIGNIN_FAILURE } from '../actions/userActions';
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, CLEAR_MESSAGE, SIGNIN_SUCCESS, SIGNIN_FAILURE, USER_AUTH_STATUS_FAILURE } from '../actions/userActions';
 
 const initialState = {
   loading: false,
   error: null,
   SignupSucess: false,
   SignINSucess: false,
-  SignInFailure: false
+  SignInFailure: false,
+  isAuthenticated: true
 };
 
 const userReducer = (state = initialState, action) => {
@@ -30,31 +31,41 @@ const userReducer = (state = initialState, action) => {
         error: action.payload
       };
 
-      case SIGNIN_SUCCESS:
-        return {
-          ...state,
-  
-          SignINSucess: true
+    case SIGNIN_SUCCESS:
+      return {
+        ...state,
 
-        };
+        SignINSucess: true,
+        isAuthenticated: true
 
-        case SIGNIN_FAILURE:
-      
-                 return {
-          ...state,
-          SignInFailure: true
+      };
 
-        };
+    case SIGNIN_FAILURE:
 
-      case CLEAR_MESSAGE:
-        return {
-          ...state,
-          SignupSucess: false,
-          SignINSucess: false,
-          SignInFailure: false
+      return {
+        ...state,
+        SignInFailure: true
+
+      };
+
+    case USER_AUTH_STATUS_FAILURE:
+
+      return {
+        ...state,
+        isAuthenticated: false
+
+      };
 
 
-        };
+    case CLEAR_MESSAGE:
+      return {
+        ...state,
+        SignupSucess: false,
+        SignINSucess: false,
+        SignInFailure: false
+
+
+      };
     default:
       return state;
   }

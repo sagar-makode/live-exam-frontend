@@ -6,6 +6,7 @@ import StudentDashboard from './StudentDashboard/StudentDashBoard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserDataRequest } from '../actions/dashboardActions';
 import TeacherDashboard from './TeacherDashboard/TeacherDashboard';
+import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
@@ -15,8 +16,15 @@ const Dashboard = () => {
   const userData = useSelector(state => state.dashboard.userData);
   
   const [loading, setLoading] = useState(true);
-
-
+  const navigate = useNavigate()
+  
+  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+  useEffect(()=>{
+    const token = sessionStorage.getItem('token');
+    if (!token || !isAuthenticated) {
+      navigate("/login")
+    }
+  })
 
   useEffect(() => {
     // Fetch user data when component mounts
