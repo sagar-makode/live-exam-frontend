@@ -15,6 +15,8 @@ function ALLCreater() {
 
   useEffect(() => {
     dispatch(fetchAllCretater());
+    setLoading({});
+
   }, [dispatch, subcribeSuccess, unsubcribeSuccess]);
 
   const handleSubscribe = async id => {
@@ -23,10 +25,6 @@ function ALLCreater() {
       [id]: true,
     }));
     dispatch(subscribeToTeacher(id));
-    // setLoading(prevLoadingStates => ({
-    //   ...prevLoadingStates,
-    //   [id]: false,
-    // }));
   };
 
   const handleUnsubscribe = id => {
@@ -35,17 +33,14 @@ function ALLCreater() {
       [id]: true,
     }));
     dispatch(unsubscribetoTeacher(id));
-    // setLoading(prevLoadingStates => ({
-    //   ...prevLoadingStates,
-    //   [id]: false,
-    // }));
+  
   };
 
-  useEffect(() => {
-    if (subcribeSuccess || unsubcribeSuccess) {
-      setLoading({});
-    }
-  }, [subcribeSuccess, unsubcribeSuccess]);
+  // useEffect(() => {
+  //   if (subcribeSuccess || unsubcribeSuccess) {
+  //     setLoading({});
+  //   }
+  // }, [subcribeSuccess, unsubcribeSuccess]);
 
   return (
     <div>
