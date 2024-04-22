@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllCretater, subscribeToTeacher, unsubscribetoTeacher } from '../../actions/subscribers';
+import { fetchAllCretater, subscribeToTeacher, unsubscribetoTeacher} from '../../actions/subscribers';
 import img from "../../assets/pngegg.png"
+import { Button, Spinner } from 'react-bootstrap';
 
 function ALLCreater() {
 
@@ -9,23 +10,34 @@ function ALLCreater() {
   const allCreterwithSubStatus = useSelector(state => state.subcriptiondata.allCreterwithSubStatus);
   const subcribeSuccess = useSelector(state => state.subcriptiondata.subcribeSuccess);
   const unsubcribeSuccess = useSelector(state => state.subcriptiondata.unsubcribeSuccess);
+  console.log(unsubcribeSuccess);
+  const [loading, setLoading] = useState(false); // Add loading state
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchAllCretater())
+console.log(allCreterwithSubStatus);
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(fetchAllCretater())
+      setLoading(false)
+  
+    }, [dispatch,subcribeSuccess,unsubcribeSuccess]);
+  
 
-  }, [dispatch, subcribeSuccess, unsubcribeSuccess]);
-
-
-  const handleSubscribe = (id) => {
-    // Dispatch action to subscribe student to teacher
-
-    dispatch(subscribeToTeacher(id));
-  };
+    const handleSubscribe = async (id) => {
+      setLoading(true)
+      // Dispatch action to subscribe student to teacher
+  dispatch(subscribeToTeacher(id))
+    }
 
   const handleUnsubscribe = (id) => {
-    dispatch(unsubscribetoTeacher(id));
+    setLoading(true)
+
+      dispatch(unsubscribetoTeacher(id));
   };
+  useEffect(() => {
+    if (subcribeSuccess || unsubcribeSuccess) {
+      setLoading(false);
+    }
+  }, [subcribeSuccess, unsubcribeSuccess]);
 
 
   return (
@@ -39,10 +51,16 @@ function ALLCreater() {
               <div>{subscription.name}</div>
               <div>Subscribers: {subscription.subscribers.length}</div>
               {subscription.isSubscribed ? (
-  <button onClick={()=>handleUnsubscribe(subscription._id)} className="btn btn-secondary">Unsubscribe</button>
-) : (
-  <button onClick={()=>handleSubscribe(subscription._id)} className="btn btn-danger">Subscribe</button>
-)}
+                 <Button variant="danger" onClick={() => handleUnsubscribe(subscription._id)} disabled={loading}>
+                 {loading ? <Spinner animation="border" size="sm" /> : 'Unsubscribe'} 
+               </Button>
+                // <button onClick={()=>handleUnsubscribe(subscription._id)}>Unsubscribe</button>
+              ) : (
+                <Button variant="primary" onClick={() => handleSubscribe(subscription._id)} disabled={loading}>
+                {loading ? <Spinner animation="border" size="sm" /> : 'Subscribe'} 
+              </Button>
+                // <button onClick={()=>handleSubscribe(subscription._id)}>Subscribe</button>
+                )}
             </div>
           </div>
         ))}
