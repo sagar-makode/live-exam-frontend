@@ -9,13 +9,16 @@ function TestResults() {
 
 
   return (
+    <div>
+
+   
     <div style={{ marginTop: "10px" }} >
       <h1>Results</h1>
-      <div>
+      <div className='main-content-table' >
 
         <div className="row">
 
-          <div className="col-md-12">
+          <div className="table-responsive">
             <div className="table-wrapper">
               {/* <div className="table-title">
                 <div className="row">
@@ -69,6 +72,7 @@ function TestResults() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
