@@ -3,6 +3,14 @@
         /* Apply styles for mobile view */
         width: 68vw;
     }
+	.table-responsive{
+		padding: 5px 15px;
+	}
+	#table-header {
+		padding: 5px 15px !important;;
+		font-size: smaller !important;
+		font-weight: bold !important;
+	}
 }
 
 /*--table design start----*/
