@@ -4,14 +4,15 @@
         width: 68vw;
     }
 	.table-responsive{
-		padding: 5px 15px;
+		padding: 2px;
 	}
 	#table-header {
-		padding: 2px !important;;
+		padding: 5px 15px !important;;
 		font-size: smaller !important;
 		font-weight: bold !important;
 	}
 }
+
 
 /*--table design start----*/
 
