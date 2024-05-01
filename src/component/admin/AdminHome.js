@@ -50,7 +50,7 @@ export default function AdminHome() {
               <span class="material-symbols-outlined icon-color mb-2">
                 calculate
               </span>
-              <h5 className="mb-1">Quantitative Aptitude</h5>
+              <h5 className="mb-1">Aptitude</h5>
               {/* <p className="m-0">Reduce Your Image Size Using This Tool</p> */}
             </div>
           </div>
