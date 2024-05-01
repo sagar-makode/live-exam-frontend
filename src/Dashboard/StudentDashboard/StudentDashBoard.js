@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchStudentTestresult, fetchTests } from '../../actions/testActions';
 import avtar from "../../assets/pngegg.png"
@@ -11,6 +11,7 @@ import TestResults from './TestResults';
 import AllTests from './AllTests';
 import Subcriptions from './Subcriptions';
 import ALLCreater from './ALLCreater';
+import SmallStudentDahboard from './SmallStudentDahboard';
 
 function StudentDashBoard() {
 
@@ -44,6 +45,23 @@ function StudentDashBoard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -61,7 +79,7 @@ function StudentDashBoard() {
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       ) : (<div className={`main-container ${isDarkMode ? 'dasboardbodydark' : 'dasboardbody'}`}>
-        <nav className={`sidebar ${isSidebarOpen ? 'open' : 'close'}`}>
+        <nav className={`sidebar ${isSidebarOpen ? 'open' : 'close'}`}ref={sidebarRef}>
           <header>
             <div className="image-text">
               <span className="image">
@@ -196,7 +214,9 @@ function StudentDashBoard() {
           {activeTab === 'dashboard' && (
             <div>
               {/* Dashboard content */}
-              <h1>Dashboard Content</h1>
+              {/* <h1>Dashboard Content</h1> */}
+              <SmallStudentDahboard/>
+              
             </div>
           )}
           {activeTab === 'liveTest' && (

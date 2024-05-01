@@ -31,41 +31,40 @@ const userReducer = (state = initialState, action) => {
         error: action.payload
       };
 
-    case SIGNIN_SUCCESS:
-      return {
-        ...state,
+      case SIGNIN_SUCCESS:
+        return {
+          ...state,
+  
+          SignINSucess: true,
+          isAuthenticated: true
 
-        SignINSucess: true,
-        isAuthenticated: true
+        };
 
-      };
+        case SIGNIN_FAILURE:
+      
+                 return {
+          ...state,
+          SignInFailure: true
 
-    case SIGNIN_FAILURE:
+        };
+        
+        case USER_AUTH_STATUS_FAILURE:
+      
+                 return {
+          ...state,
+          isAuthenticated:false
 
-      return {
-        ...state,
-        SignInFailure: true
+        };
 
-      };
-
-    case USER_AUTH_STATUS_FAILURE:
-
-      return {
-        ...state,
-        isAuthenticated: false
-
-      };
-
-
-    case CLEAR_MESSAGE:
-      return {
-        ...state,
-        SignupSucess: false,
-        SignINSucess: false,
-        SignInFailure: false
+      case CLEAR_MESSAGE:
+        return {
+          ...state,
+          SignupSucess: false,
+          SignINSucess: false,
+          SignInFailure: false
 
 
-      };
+        };
     default:
       return state;
   }
