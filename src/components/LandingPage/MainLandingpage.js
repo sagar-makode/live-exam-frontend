@@ -47,7 +47,7 @@ export default function MainLandingpage() {
           <div className="card " >
             <div className=" text-center p-3 ">
               {/* <i className="fa fa-3x fa-image icon-color mb-2"></i> */}
-              <span class="material-symbols-outlined icon-color mb-2">
+              <span className="material-symbols-outlined icon-color mb-2">
                 calculate
               </span>
               <h5 className="mb-1">Quantitative Aptitude</h5>
@@ -59,7 +59,7 @@ export default function MainLandingpage() {
           <div className="card " >
             <div className="  text-center p-3">
 
-              <span class="material-symbols-outlined icon-color mb-2">
+              <span className="material-symbols-outlined icon-color mb-2">
                 psychology
               </span>
               {/* <i className="fa fa-3x fa-object-group icon-color mb-2"></i> */}
@@ -72,7 +72,7 @@ export default function MainLandingpage() {
           <div className="card " >
             <div className=" text-center p-3">
 
-              <span class="material-symbols-outlined icon-color mb-2">
+              <span className="material-symbols-outlined icon-color mb-2">
                 science
               </span>
               {/* <i className="fa fa-3x fa-file-pdf-o icon-color mb-2"></i> */}
@@ -86,7 +86,7 @@ export default function MainLandingpage() {
             <div className="  text-center p-3">
 
 
-              <span class="material-symbols-outlined icon-color mb-2">
+              <span className="material-symbols-outlined icon-color mb-2">
                 experiment
               </span>
               {/* <i className="fa fa-3x fa-object-ungroup icon-color mb-2"></i> */}

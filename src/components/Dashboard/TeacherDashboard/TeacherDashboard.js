@@ -139,7 +139,7 @@ function TeacherDashboard() {
                     <Link >
 
 
-                      <span class="material-symbols-outlined icon">
+                      <span className="material-symbols-outlined icon">
                         account_circle
                       </span>
 

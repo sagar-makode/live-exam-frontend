@@ -246,9 +246,9 @@ function CreateTest() {
                                                     </span>
                                                 </button>
                                             )}
-                                            {getError(`question${index}`) && <div className="text-danger">{getError(`question${index}`)}</div>}
 
                                         </div>
+                                            {getError(`question${index}`) && <div className="text-danger">{getError(`question${index}`)}</div>}
 
                                     </div>
                                     <div className="row">
