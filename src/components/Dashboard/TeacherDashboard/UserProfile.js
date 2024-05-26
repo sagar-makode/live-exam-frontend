@@ -4,6 +4,9 @@ import { clearMessage, userProfileUpdateRequest } from '../../actions/userAction
 import ImageCropModal from '../StudentDashboard/ImageCropModel';
 import { fetchUserDataRequest } from '../../actions/dashboardActions';
 import { notification } from 'antd';
+import GetfirstAndLastName from '../../common/GetfirstAndLastName';
+
+
 import profileImage from "../../assets/profile image.png"
 function UserProfile() {
     const teacherProfileData = useSelector(state => state.dashboard.userData);
@@ -303,8 +306,8 @@ function UserProfile() {
                                             </div>
                                         )}
                                         <div className="mt-1">
-                                            <h4 className='mt-3'>Student Name</h4>
-                                            <p className="text-secondary mb-1">Student Role</p>
+                                        <h4 className='mt-3'>{GetfirstAndLastName(teacherProfileData.name)}</h4>
+                                        <p className="text-secondary mb-1">{teacherProfileData.role}</p>
                                         </div>
                                     </div>
 

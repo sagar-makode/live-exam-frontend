@@ -6,6 +6,7 @@ import ImageCropModal from './ImageCropModel';
 import { fetchUserDataRequest } from '../../actions/dashboardActions';
 import { notification } from 'antd';
 import profileImage from "../../assets/profile image.png"
+import GetfirstAndLastName from '../../common/GetfirstAndLastName';
 function UserProfile() {
     const studentProfileData = useSelector(state => state.dashboard.userData);
     const studentSubcriptions = useSelector(state => state.subcriptiondata.studentSubcriptions);
@@ -287,8 +288,9 @@ function UserProfile() {
                                         )}
                                         <div className="mt-1">
                                             <h4 className='mt-3'>Student Name</h4>
-                                            <p className="text-secondary mb-1">Student Role</p>
-                                        </div>
+                                            <h4 className='mt-3'>{GetfirstAndLastName(studentProfileData.name)}</h4>
+
+                                            <p className="text-secondary mb-1">{studentProfileData.role}</p>                                        </div>
                                     </div>
 
 
