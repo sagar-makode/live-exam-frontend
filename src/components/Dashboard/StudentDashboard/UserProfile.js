@@ -287,7 +287,6 @@ function UserProfile() {
                                             </div>
                                         )}
                                         <div className="mt-1">
-                                            <h4 className='mt-3'>Student Name</h4>
                                             <h4 className='mt-3'>{GetfirstAndLastName(studentProfileData.name)}</h4>
 
                                             <p className="text-secondary mb-1">{studentProfileData.role}</p>                                        </div>

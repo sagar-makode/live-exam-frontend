@@ -11,6 +11,7 @@ import { fetchTeacherCreatedTests, fetchTeacherCreatedTestsinBin } from '../../a
 import AuthContext from '../../Navbar/AuthContext';
 import UserProfile from './UserProfile';
 import profileImage from "../../assets/profile image.png"
+import GetfirstAndLastName from '../../common/GetfirstAndLastName';
 
 function TeacherDashboard() {
     const dispatch = useDispatch()  
@@ -65,7 +66,8 @@ function TeacherDashboard() {
             </span>
 
             <div className="text logo-text">
-              <span className="name">{teacherProfileData.name}</span>
+          
+              <span className="name">{GetfirstAndLastName(teacherProfileData.name)}</span>
               <span className="profession">{teacherProfileData.role}</span>
             </div>
           </div>

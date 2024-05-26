@@ -14,6 +14,7 @@ import ALLCreater from './ALLCreater';
 import AuthContext from '../../Navbar/AuthContext';
 import UserProfile from './UserProfile';
 import { fetchStudentSubcriptions } from '../../actions/subscribers';
+import GetfirstAndLastName from '../../common/GetfirstAndLastName';
 
 function StudentDashBoard() {
 
@@ -96,7 +97,7 @@ function StudentDashBoard() {
                 </span>
 
                 <div className="text logo-text">
-                  <span className="name">{studentProfileData.name}</span>
+                  <span className="name">{GetfirstAndLastName(studentProfileData.name)}</span>
                   <span className="profession">{studentProfileData.role}</span>
                 </div>
               </div>
