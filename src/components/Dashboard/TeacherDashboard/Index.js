@@ -75,7 +75,7 @@ function Dashboard() {
 //For the creation of the icons on the top
 function DashboardCard({ title, value, icon }) {
   return (
-    title = title,
+    // title = title,
     <Card>
       <Space direction="horizontal">
         {icon}
