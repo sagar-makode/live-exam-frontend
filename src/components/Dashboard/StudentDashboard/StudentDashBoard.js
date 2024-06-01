@@ -15,6 +15,7 @@ import AuthContext from '../../Navbar/AuthContext';
 import UserProfile from './UserProfile';
 import { fetchStudentSubcriptions } from '../../actions/subscribers';
 import GetfirstAndLastName from '../../common/GetfirstAndLastName';
+import Index from './Index';
 
 function StudentDashBoard() {
 
@@ -237,6 +238,7 @@ function StudentDashBoard() {
                 {/* Dashboard content */}
                 <h1>Dashboard Content</h1>
                 {/* <SmallStudentDahboard/> */}
+                <Index/>
 
               </div>
             )}
@@ -248,8 +250,8 @@ function StudentDashBoard() {
             )}
             {activeTab === 'testSeries' && (
               <div>
-                {/* Test Series content */}
-                <TestSeries />
+                Test Series
+                {/* <TestSeries /> */}
               </div>
             )}
 
