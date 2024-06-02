@@ -14,7 +14,7 @@ export default function MainLandingpage() {
   return (
     <div className='landingbody'>
 
-      <div id="carouselExampleSlidesOnly" className="carousel slide pt-2" data-bs-ride="carousel">
+      <div id="carouselExampleSlidesOnly" className="carousel slide pb-3 pt-3" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src={img1} className="d-block w-100" alt="Slide 1" />
