@@ -12,9 +12,9 @@ export default function MainLandingpage() {
 
 
   return (
-    <div  className='landingbody'>
+    <div className='landingbody'>
 
-      <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+      <div id="carouselExampleSlidesOnly" className="carousel slide p-3" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src={img1} className="d-block w-100" alt="Slide 1" />
@@ -26,6 +26,14 @@ export default function MainLandingpage() {
             <img src={img3} className="d-block w-100" alt="Slide 3" />
           </div>
         </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
       </div>
 
 
@@ -33,16 +41,16 @@ export default function MainLandingpage() {
       <div className='section'>
         <div className="box-container">
 
-          <div className="box card">
+          <div className="box cards">
             <span className="material-symbols-outlined icon">
               calculate
             </span>
             <div>
-              <h4 className='text-center'>Quantitative Aptitude</h4>
+              <h4 className='text-center'>Aptitude</h4>
             </div>
           </div>
 
-          <div className="box card">
+          <div className="box cards">
             {/* <i className="fas fa-user-graduate"></i> */}
 
             <span className="material-symbols-outlined icon">
@@ -53,7 +61,7 @@ export default function MainLandingpage() {
             </div>
           </div>
 
-          <div className="box card">
+          <div className="box cards">
             <span class="material-symbols-outlined icon">
               public
             </span>
@@ -62,7 +70,7 @@ export default function MainLandingpage() {
             </div>
           </div>
 
-          <div className="box card">
+          <div className="box cards">
             <span class="material-symbols-outlined icon">
               network_intelligence_history
             </span>
