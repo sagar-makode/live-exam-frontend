@@ -44,7 +44,7 @@ export default function MainLandingpage() {
 
 
           <div className="box cards">
-            <span className="material-symbols-outlined icon">
+            <span className="material-symbols-outlined homeicons">
               calculate
             </span>
             <div>
@@ -53,7 +53,7 @@ export default function MainLandingpage() {
           </div>
 
           <div className="box cards">
-            <span class="material-symbols-outlined icon">
+            <span class="material-symbols-outlined homeicons">
               network_intelligence_history
             </span>
             <div>
@@ -64,7 +64,7 @@ export default function MainLandingpage() {
           <div className="box cards">
             {/* <i className="fas fa-user-graduate"></i> */}
 
-            <span className="material-symbols-outlined icon">
+            <span className="material-symbols-outlined homeicons">
               psychology
             </span>
             <div>
@@ -74,7 +74,7 @@ export default function MainLandingpage() {
 
 
           <div className="box cards">
-            <span class="material-symbols-outlined icon">
+            <span class="material-symbols-outlined homeicons">
               public
             </span>
             <div>

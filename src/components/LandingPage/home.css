@@ -184,7 +184,7 @@
     .section {
         padding: 0 1.5rem  !important
     }
-    .icon {
+    .homeicons {
         font-size: 3rem !important;
     
     }
@@ -211,6 +211,12 @@
 }
 
 .icon {
+    font-size: 5rem;
+    color: #0099ff;
+
+}
+
+.homeicons {
     font-size: 5rem;
     color: #0099ff;
 
