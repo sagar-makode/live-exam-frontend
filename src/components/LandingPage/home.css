@@ -201,13 +201,13 @@
     }
 }
 
-.box-container .box {
-    border-radius: .5rem;
-    /* background-color: rgb(242, 242, 242); */
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+
+@media (max-width: 388px) {
+    .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+        gap: 1rem !important;
+   
+    }
 }
 
 .icon {
