@@ -177,7 +177,7 @@
 
 @media (max-width: 600px) {
     .box-container {
-        grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
         gap: 1rem !important;
    
     }
