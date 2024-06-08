@@ -14,7 +14,7 @@ export default function MainLandingpage() {
   return (
     <div className='landingbody'>
 
-      <div id="carouselExampleSlidesOnly" className="carousel slide pb-3 pt-3" data-bs-ride="carousel">
+      <div id="carouselExampleSlidesOnly" className="carousel slide mb-3 mt-3 mainimage" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src={img1} className="d-block w-100" alt="Slide 1" />
@@ -141,8 +141,8 @@ export default function MainLandingpage() {
           <div className='text-center'>
             <div>
               <h4><span style={{ color: "red" }}>-- </span>Online Test<span style={{ color: "red" }}> --</span></h4>
-              <h2 className='mb-4'>Enter the world of real-time assessment with our live exam platform. </h2>
-              <h5 className='mb-4'> "Join thousands of students in experiencing the thrill of live exams from the comfort of your home"</h5>
+              <h4 className='home-text'>Enter the world of real-time assessment with our live exam platform. </h4>
+              <h6 className='home-text2'> "Join thousands of students in experiencing the thrill of live exams from the comfort of your home"</h6>
             </div>
 
           </div>
