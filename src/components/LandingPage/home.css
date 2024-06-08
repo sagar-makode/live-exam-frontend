@@ -196,11 +196,19 @@
         /* background-color: rgb(242, 242, 242); */
         padding: 1rem !important;
         display: flex;
-        align-items: center;
+        align-items: center !important;
         gap: .6rem;
     }
 }
 
+.box-container .box {
+    border-radius: .5rem;
+    /* background-color: rgb(242, 242, 242); */
+    padding: 1rem !important;
+    display: flex;
+    align-items: center !important;
+    gap: 1rem;
+}
 
 @media (max-width: 388px) {
     .box-container {
