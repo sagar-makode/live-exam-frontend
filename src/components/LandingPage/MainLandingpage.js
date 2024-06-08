@@ -41,34 +41,14 @@ export default function MainLandingpage() {
       <div className='section'>
         <div className="box-container">
 
-        
 
-          <div className="box cards">
-            {/* <i className="fas fa-user-graduate"></i> */}
-
-            <span className="material-symbols-outlined icon">
-              psychology
-            </span>
-            <div>
-              <h4>Logical Reasoning</h4>
-            </div>
-          </div>
 
           <div className="box cards">
             <span className="material-symbols-outlined icon">
               calculate
             </span>
             <div>
-              <h4 className='text-center'>Aptitude</h4>
-            </div>
-          </div>
-
-          <div className="box cards">
-            <span class="material-symbols-outlined icon">
-              public
-            </span>
-            <div>
-              <h4>Current Affairs</h4>
+              <h4 className='cardtext text-center' >Aptitude</h4>
             </div>
           </div>
 
@@ -77,9 +57,32 @@ export default function MainLandingpage() {
               network_intelligence_history
             </span>
             <div>
-              <h4>History</h4>
+              <h4 className='cardtext text-center'>History</h4>
             </div>
           </div>
+
+          <div className="box cards">
+            {/* <i className="fas fa-user-graduate"></i> */}
+
+            <span className="material-symbols-outlined icon">
+              psychology
+            </span>
+            <div>
+              <h4 className='cardtext text-center' >Logical Reasoning</h4>
+            </div>
+          </div>
+
+
+          <div className="box cards">
+            <span class="material-symbols-outlined icon">
+              public
+            </span>
+            <div>
+              <h4 className='cardtext text-center'>Current Affairs</h4>
+            </div>
+          </div>
+
+
 
         </div>
 

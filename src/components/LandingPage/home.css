@@ -172,6 +172,35 @@
    
     }
 }
+
+
+
+@media (max-width: 600px) {
+    .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+        gap: 1rem !important;
+   
+    }
+    .section {
+        padding: 0 1.5rem  !important
+    }
+    .icon {
+        font-size: 3rem !important;
+    
+    }
+    .cardtext{
+        font-size: 90%
+    }
+    .box-container .box {
+        border-radius: .5rem;
+        /* background-color: rgb(242, 242, 242); */
+        padding: 1rem !important;
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+    }
+}
+
 .box-container .box {
     border-radius: .5rem;
     /* background-color: rgb(242, 242, 242); */
