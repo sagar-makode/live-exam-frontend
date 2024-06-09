@@ -6,3 +6,26 @@
 .footerpadding{
   padding: 20px 40px 0px 40px;
 }
+
+.footertitle p{
+
+margin-bottom: 0.5rem !important;
+}
+.footertitle h5{
+
+  margin-bottom: 0.7rem !important;
+  }
+  
+
+@media (max-width: 768px) {
+
+  .footerpadding{
+    padding: 10px 20px 0px 20px;
+  }
+  .footertitle p{
+
+    margin-bottom: 0.3rem !important;
+    }
+
+
+}

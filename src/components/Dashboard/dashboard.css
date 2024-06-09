@@ -220,14 +220,14 @@
   .menu-bar::-webkit-scrollbar {
     display: none;
   }
-  .sidebar .menu-bar .mode {
+  /* .sidebar .menu-bar .mode {
     border-radius: 6px;
     background-color: var(--primary-color-light);
     position: relative;
     transition: var(--tran-05);
-  }
+  } */
   
-  .menu-bar .mode .sun-moon {
+  /* .menu-bar .mode .sun-moon {
     height: 50px;
     width: 60px;
   }
@@ -243,9 +243,9 @@
   }
   .dasboardbody.dark .mode .sun-moon i.moon {
     opacity: 0;
-  }
+  } */
   
-  .menu-bar .bottom-content .toggle-switch {
+  /* .menu-bar .bottom-content .toggle-switch {
     position: absolute;
     right: 0;
     height: 100%;
@@ -263,7 +263,7 @@
     border-radius: 25px;
     background-color: var(--toggle-color);
     transition: var(--tran-05);
-  }
+  } */
   
   .switch::before {
     content: "";
@@ -348,4 +348,29 @@
 
 .custom-icon {
   font-size:4rem; /* Adjust this value to match the text size */
+}
+
+@media (max-width: 768px) {
+
+  .sidebar {
+  margin-top: 71px;
+  padding: 5px 5px;
+  }
+  .sidebar.close {
+    width: 70px;
+}
+.main-content{
+  padding-left: 4px;
+}
+/* .row {
+ 
+  padding-left: 0;
+
+} */
+
+}
+
+.table-responsive {
+  padding: 2px;
+  margin-left: calc(var(--bs-gutter-x)* .5);
 }

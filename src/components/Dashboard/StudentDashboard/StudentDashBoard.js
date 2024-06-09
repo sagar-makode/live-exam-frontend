@@ -52,7 +52,7 @@ function StudentDashBoard() {
   }, [dispatch]);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
 
   const sidebarRef = useRef(null);
 
@@ -74,9 +74,9 @@ function StudentDashBoard() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  // const toggleDarkMode = () => {
+  //   setIsDarkMode(!isDarkMode);
+  // };
 
 
 
@@ -89,7 +89,7 @@ function StudentDashBoard() {
         </Spinner>
       ) : (
 
-        <div className={`main-container ${isDarkMode ? 'dasboardbodydark' : 'dasboardbody'}`}>
+        <div className='main-container dasboardbody'>
           <nav className={`sidebar ${isSidebarOpen ? 'open' : 'close'}`} ref={sidebarRef}>
             <header>
               <div className="image-text">
@@ -213,7 +213,7 @@ function StudentDashBoard() {
                   </Link>
                 </li>
 
-                <li className="mode">
+                {/* <li className="mode">
                   <div className="sun-moon">
                     <i className='bx bx-moon icon moon'></i>
                     <i className='bx bx-sun icon sun'></i>
@@ -223,7 +223,7 @@ function StudentDashBoard() {
                   <div className="toggle-switch" onClick={toggleDarkMode}>
                     <span className="switch" ></span>
                   </div>
-                </li>
+                </li> */}
 
               </div>
             </div>

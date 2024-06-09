@@ -5,6 +5,8 @@
     }
 	.table-responsive{
 		padding: 2px;
+		/* padding-left: calc(var(--bs-gutter-x)* .5); */
+
 	}
 	#table-header {
 		padding: 5px 15px !important;;
