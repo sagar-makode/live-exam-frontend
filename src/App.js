@@ -14,6 +14,7 @@ import AllTopCreators from './components/LandingPage/AllTopCreators';
 import AboutPage from './components/About/AboutPage';
 import TermsAndConditions from './components/Dashboard/StudentDashboard/TearmsAndConditions';
 import CreatorTests from './components/LandingPage/CreatorTests';
+import Forgot from './components/UserSignUp/ForgotPassword/Forgot';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="/aboutus" element={<AboutPage/>} />
             <Route exact path="/terms&conditions" element={<TermsAndConditions/>} />
             <Route exact path="/creator/:creatorId/tests" element={<CreatorTests/>} />
+            <Route exact path="/forgot" element={<Forgot />} />
 
 
 
