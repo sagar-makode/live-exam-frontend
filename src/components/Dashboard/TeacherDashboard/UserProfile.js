@@ -161,7 +161,6 @@ function UserProfile() {
     return (
         <>
             <div className="user-profile-container container-fluid">
-                <h1>User Profile</h1>
                 <div className="main-body">
                     <div className="row">
 

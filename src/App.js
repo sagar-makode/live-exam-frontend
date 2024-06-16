@@ -12,6 +12,8 @@ import { AuthProvider } from './components/Navbar/AuthContext';
 import AllTestRecords from './components/LandingPage/AllTestRecords';
 import AllTopCreators from './components/LandingPage/AllTopCreators';
 import AboutPage from './components/About/AboutPage';
+import TermsAndConditions from './components/Dashboard/StudentDashboard/TearmsAndConditions';
+import CreatorTests from './components/LandingPage/CreatorTests';
 
 
 function App() {
@@ -35,6 +37,10 @@ function App() {
             <Route exact path="/alltest" element={<AllTestRecords/>} />
             <Route exact path="/allcreators" element={<AllTopCreators/>} />
             <Route exact path="/aboutus" element={<AboutPage/>} />
+            <Route exact path="/terms&conditions" element={<TermsAndConditions/>} />
+            <Route exact path="/creator/:creatorId/tests" element={<CreatorTests/>} />
+
+
 
 
 
