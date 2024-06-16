@@ -1,8 +1,14 @@
 // sagas/userSaga.js
 
 import { put, takeLatest,call } from 'redux-saga/effects';
-import {  PROFILE_UPDATE_FAILURE, PROFILE_UPDATE_SUCCESS, SIGNIN_FAILURE, SIGNIN_SUCCESS, SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS, STUDENT_SIGNIN_REQUEST, TEACHER_SIGNIN_REQUEST, USER_PROFILE_UPDATE_REQUEST } from '../actions/userActions';
-import axios from 'axios';
+import {  PROFILE_UPDATE_FAILURE, PROFILE_UPDATE_SUCCESS, SIGNIN_FAILURE, SIGNIN_SUCCESS, SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS, STUDENT_SIGNIN_REQUEST, TEACHER_SIGNIN_REQUEST, USER_PROFILE_UPDATE_REQUEST 
+  ,OTP_REQUEST,OTP_REQUEST_SUCCESS,OTP_REQUEST_FAILURE, 
+  VARIFY_OTP,
+  VARIFY_OTP_SUCCESS,
+  VARIFY_OTP_FAILURE,
+  FORGOT_PASSWORD,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAILURE} from '../actions/userActions';import axios from 'axios';
 
 
 function* handleSignup(action) {
@@ -83,11 +89,57 @@ function* handleSignup(action) {
       yield put({ type: PROFILE_UPDATE_FAILURE });
     }
   }
+
+
+
+  function* generateOtp(action){
+    try {
+      const response = yield call(axios.post, "https://live-exam-backend.onrender.com/generateopt", action.payload);
+      if (response.data) {
+  
+        yield put({ type: OTP_REQUEST_SUCCESS, payload: response.data.message});
+      }
+    } catch (error) {
+      console.error(error.message);
+      yield put({ type: OTP_REQUEST_FAILURE });
+    }
+  }
+  
+  function* resetPassword(action){
+    try {
+      const response = yield call(axios.post, "https://live-exam-backend.onrender.com/reset", action.payload);
+      if (response.data) {
+     
+        yield put({ type: FORGOT_PASSWORD_SUCCESS, payload: response.data.message});
+      }
+    } catch (error) {
+   
+      yield put({ type: FORGOT_PASSWORD_FAILURE });
+    }
+  }
+  
+  
+  function* varifyOtp(action){
+    try {
+      const response = yield call(axios.post, "https://live-exam-backend.onrender.com/varifyopt", action.payload);
+      if (response.data) {
+        yield put({ type: VARIFY_OTP_SUCCESS,payload:response.data });
+      }
+    } catch (error) {
+      console.error(error);
+      yield put({ type: VARIFY_OTP_FAILURE });
+    }
+  }
+  
 function* userSaga() {
   yield takeLatest(SIGNUP_REQUEST, handleSignup);
   yield takeLatest(TEACHER_SIGNIN_REQUEST, handleTeacherSignin);
   yield takeLatest(STUDENT_SIGNIN_REQUEST, handleStudentSignin);
   yield takeLatest(USER_PROFILE_UPDATE_REQUEST, handleUpdateProfile);
+
+  yield takeLatest(OTP_REQUEST,generateOtp);
+  yield takeLatest(VARIFY_OTP,varifyOtp);
+  yield takeLatest(FORGOT_PASSWORD,resetPassword);
 
 
 
